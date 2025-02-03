@@ -1,15 +1,24 @@
 import { create } from "zustand";
 
-interface StoreState {
-  count: number;
-  increment: () => void;
-  decrement: () => void;
+interface UiStoreState {
+  isPageLoading: boolean;
+  turnOnPageLoading: () => void;
+  turnOffPageLoading: () => void;
+  turnPageLoadingBySec: (sec: number) => void;
 }
 
-const useStore = create<StoreState>((set) => ({
-  count: 0,
-  increment: () => set((state) => ({ count: state.count + 1 })),
-  decrement: () => set((state) => ({ count: state.count - 1 })),
+const uiStore = create<UiStoreState>((set) => ({
+  isPageLoading: false,
+  turnOnPageLoading: () => set(() => ({ isPageLoading: true })),
+  turnOffPageLoading: () => set(() => ({ isPageLoading: false })),
+  turnPageLoadingBySec: (sec) =>
+    set((state) => {
+      state.turnOnPageLoading();
+      setTimeout(() => {
+        state.turnOffPageLoading();
+      }, sec * 1000);
+      return {};
+    }),
 }));
 
-export default useStore;
+export default uiStore;

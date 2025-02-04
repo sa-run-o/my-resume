@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 
-const Contact = () => {
-  return <SContainer>Contact</SContainer>;
+const Experience = () => {
+  return <SContainer>Experience</SContainer>;
 };
-export default Contact;
+export default Experience;
 const SContainer = styled.div`
   height: 100vh;
   width: 100vw;

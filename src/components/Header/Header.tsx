@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import HamburgerMenuIcon from "../../assets/svg/hamburger-menu.svg";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import uiStore from "../../stores/uiStore";
 const DEFAULT_MENU = [
   { label: "HOME", nav: "/" },
   { label: "EXPERIENCE", nav: "/experience" },
@@ -9,13 +10,17 @@ const DEFAULT_MENU = [
 ];
 const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { turnPageLoadingBySec } = uiStore();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const handleNavigate = () => {
-    navigate("/");
+  const handleNavigate = (path: string) => {
+    setIsOpenMenu(false);
+    turnPageLoadingBySec(5);
+    navigate(path);
   };
   return (
     <SContainer>
-      <div className="left" onClick={() => handleNavigate()}>
+      <div className="left" onClick={() => handleNavigate("/")}>
         <sup>Ⓢ</sup> RUN
       </div>
       <div className="right">
@@ -32,8 +37,12 @@ const Header = () => {
                 {DEFAULT_MENU.map((menu) => {
                   return (
                     <SMenu
+                      key={menu.label}
+                      className={`${
+                        location.pathname === menu.nav ? "selected" : ""
+                      }`}
                       onClick={() => {
-                        navigate(menu.nav);
+                        handleNavigate(menu.nav);
                       }}
                     >
                       {menu.label}
@@ -108,4 +117,10 @@ const SMenuContainer = styled.div`
 const SMenu = styled.div`
   font-size: 3rem;
   cursor: pointer;
+  &.selected {
+    text-decoration: underline;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
 `;

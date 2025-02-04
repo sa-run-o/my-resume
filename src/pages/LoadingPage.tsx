@@ -31,7 +31,7 @@ const SContainer = styled.div`
   align-items: center;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 1);
   .card {
     padding: 1rem 2rem;
     border-radius: 1.25rem;

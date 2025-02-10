@@ -41,6 +41,26 @@ const Home = () => {
     <SContainer>
       <SectionLayout bgImage={sand}>
         <SGreetingContainer ref={refGreet} inView={inViewGreet}>
+          <div className="welcome f">
+            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
+            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
+            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
+          </div>
+          <div className="welcome s">
+            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
+            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
+            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
+          </div>
+          <div className="welcome t">
+            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
+            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
+            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
+          </div>
+          <div className="welcome fo">
+            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
+            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
+            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
+          </div>
           <div className="name">
             <div>SARUN</div>
           </div>
@@ -123,6 +143,7 @@ const Home = () => {
 };
 
 export default Home;
+
 const slideUp = keyframes`
   from {
     transform: translateY(100%);
@@ -143,7 +164,24 @@ const slideDown = keyframes`
     opacity: 0;
   }
 `;
+const slideDownNoOpacity = keyframes`
+ 0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(50%);
+  }
+`;
+const slideUpNoOpacity = keyframes`
+ 0% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+`;
 const SGreetingContainer = styled.div<{ inView: boolean }>`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -153,8 +191,33 @@ const SGreetingContainer = styled.div<{ inView: boolean }>`
   & > div {
     animation: ${({ inView }) => (inView ? slideUp : slideDown)} 1s ease-out;
     overflow: hidden;
-    .welcomeTop {
-      align-self: start;
+    &.welcome {
+      writing-mode: vertical-lr;
+      display: inline-block;
+      text-orientation: upright;
+      position: absolute;
+      bottom: 0;
+      transform: translateX(0%);
+      white-space: nowrap;
+      font-weight: bold;
+      font-size: 0.5rem;
+      line-height: 0.6rem;
+      &.f {
+        left: 16.5%;
+        animation: ${slideDownNoOpacity} 18s linear infinite;
+      }
+      &.s {
+        left: 33%;
+        animation: ${slideUpNoOpacity} 20s linear infinite;
+      }
+      &.t {
+        left: 67%;
+        animation: ${slideUpNoOpacity} 20s linear infinite;
+      }
+      &.fo {
+        left: 83.5%;
+        animation: ${slideDownNoOpacity} 18s linear infinite;
+      }
     }
     &.position {
       color: black;
@@ -231,7 +294,7 @@ const SIntroContainer = styled.div<{ inView: boolean }>`
         color: #878787;
         animation: ${({ inView }) => (inView ? fadeIn : "none")} 6s ease-out;
         & > strong {
-          color: #aeaeae;
+          color: #e3e3e3;
         }
       }
     }
@@ -248,7 +311,7 @@ const SIntroContainer = styled.div<{ inView: boolean }>`
         }
         color: #000000;
         & > strong {
-          color: #aeaeae;
+          color: #e3e3e3;
         }
       }
     }

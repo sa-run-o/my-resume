@@ -21,7 +21,7 @@ const SContainer = styled.section`
   width: 100%;
   scroll-snap-align: start;
   position: relative;
-  background-color: black;
+  background-color: #000;
   z-index: 1;
 `;
 

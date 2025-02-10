@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import HamburgerMenuIcon from "../../assets/svg/hamburger-menu.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -50,7 +50,10 @@ const Header = () => {
                   );
                 })}
               </SMenuContainer>
-              <div>asd</div>
+              <SStatus>
+                <GreenDot />
+                <div>Available</div>
+              </SStatus>
             </div>
           </SMenuLayout>
         )}
@@ -123,4 +126,25 @@ const SMenu = styled.div`
   &:hover {
     text-decoration: underline;
   }
+`;
+const popAnimation = keyframes`
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+   opacity: 1;
+  }
+`;
+const SStatus = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px 0px;
+`;
+const GreenDot = styled.div`
+  width: 10px;
+  height: 10px;
+  background-color: #4cc24c;
+  border-radius: 50%;
+  animation: ${popAnimation} 1s infinite;
+  margin-right: 5px;
 `;

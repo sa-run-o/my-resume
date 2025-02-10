@@ -2,28 +2,121 @@ import styled, { keyframes } from "styled-components";
 import SectionLayout from "../components/Body/SectionLayout";
 import { useInView } from "react-intersection-observer";
 import sand from "../assets/background/sand.jpg";
+import { useEffect, useRef } from "react";
+
 const Home = () => {
-  const { ref, inView } = useInView({
+  const { ref: refGreet, inView: inViewGreet } = useInView({
     triggerOnce: false,
     threshold: 0.5,
   });
+  const { ref: refIntro, inView: inViewIntro } = useInView({
+    triggerOnce: false,
+    threshold: 0.5,
+  });
+  const scrollLRef = useRef<HTMLDivElement>(null);
+  const scrollRRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const leftElement = scrollLRef.current;
+    const rightElement = scrollRRef.current;
+
+    if (leftElement && rightElement) {
+      const handleScroll = (e: Event) => {
+        if (e.target === leftElement) {
+          rightElement.scrollTop = leftElement.scrollTop;
+        } else if (e.target === rightElement) {
+          leftElement.scrollTop = rightElement.scrollTop;
+        }
+      };
+
+      leftElement.addEventListener("scroll", handleScroll);
+      rightElement.addEventListener("scroll", handleScroll);
+
+      return () => {
+        leftElement.removeEventListener("scroll", handleScroll);
+        rightElement.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, []);
   return (
     <SContainer>
       <SectionLayout bgImage={sand}>
-        <SGreetingContainer ref={ref} inView={inView}>
-          <div>
+        <SGreetingContainer ref={refGreet} inView={inViewGreet}>
+          <div className="name">
             <div>SARUN</div>
           </div>
-          <div>
+          <div className="position">
             <div>FULLSTACK DEVELOPER</div>
           </div>
-          <div>
+          <div className="surname">
             <div>OLANKRANOK</div>
           </div>
         </SGreetingContainer>
       </SectionLayout>
       <SectionLayout>
-        <div>1</div>
+        <SIntroContainer ref={refIntro} inView={inViewIntro}>
+          <div ref={scrollLRef}>
+            <span>
+              Hi, I'm Sarun Olankranok (<strong>Run</strong>) 👋
+            </span>
+            <span>
+              I'm a <strong>Fullstack Developer</strong> with{" "}
+              <strong>4 years of experience</strong>, specializing in{" "}
+              <strong>React Hook, TypeScript, and Node.js</strong>. My passion
+              lies in <strong>frontend development</strong>, crafting seamless{" "}
+              <strong>UI/UX experiences</strong>, and bringing interfaces to
+              life with <strong>animations</strong>.
+            </span>
+            <span>
+              I love building{" "}
+              <strong>intuitive and engaging web applications</strong> that not
+              only function smoothly but also <strong>feel great to use</strong>
+              . Whether it's{" "}
+              <strong>
+                interactive UI elements, dynamic animations, or optimizing
+                performance
+              </strong>
+              , I enjoy turning ideas into{" "}
+              <strong>beautifully designed digital experiences</strong>.
+            </span>
+            <span>
+              Beyond coding, I enjoy <strong>reading manga & novels 📚</strong>{" "}
+              and <strong>playing games 🎮</strong>, which inspire my creativity
+              in <strong>design and user interaction</strong>. Let's create
+              something amazing together! 🚀
+            </span>
+          </div>
+          <div ref={scrollRRef}>
+            <span>
+              Hi, I'm Sarun Olankranok (<strong>Run</strong>) 👋
+            </span>
+            <span>
+              I'm a <strong>Fullstack Developer</strong> with{" "}
+              <strong>4 years of experience</strong>, specializing in{" "}
+              <strong>React Hook, TypeScript, and Node.js</strong>. My passion
+              lies in <strong>frontend development</strong>, crafting seamless{" "}
+              <strong>UI/UX experiences</strong>, and bringing interfaces to
+              life with <strong>animations</strong>.
+            </span>
+            <span>
+              I love building{" "}
+              <strong>intuitive and engaging web applications</strong> that not
+              only function smoothly but also <strong>feel great to use</strong>
+              . Whether it's{" "}
+              <strong>
+                interactive UI elements, dynamic animations, or optimizing
+                performance
+              </strong>
+              , I enjoy turning ideas into{" "}
+              <strong>beautifully designed digital experiences</strong>.
+            </span>
+            <span>
+              Beyond coding, I enjoy <strong>reading manga & novels 📚</strong>{" "}
+              and <strong>playing games 🎮</strong>, which inspire my creativity
+              in <strong>design and user interaction</strong>. Let's create
+              something amazing together! 🚀
+            </span>
+          </div>
+        </SIntroContainer>
       </SectionLayout>
     </SContainer>
   );
@@ -40,16 +133,30 @@ const slideUp = keyframes`
     opacity: 1;
   }
 `;
+const slideDown = keyframes`
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+`;
 const SGreetingContainer = styled.div<{ inView: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: black;
+  cursor: default;
   & > div {
-    animation: ${({ inView }) => (inView ? slideUp : "none")} 1s ease-out; /* Apply the slide-up animation conditionally */
+    animation: ${({ inView }) => (inView ? slideUp : slideDown)} 1s ease-out;
     overflow: hidden;
-    &:nth-child(2) {
+    .welcomeTop {
+      align-self: start;
+    }
+    &.position {
       color: black;
       font-size: 1rem;
       line-height: 1.5rem;
@@ -62,8 +169,8 @@ const SGreetingContainer = styled.div<{ inView: boolean }>`
         line-height: 1.25rem;
       }
     }
-    &:nth-child(1),
-    &:nth-child(3) {
+    &.name,
+    &.surname {
       padding-top: 1.25rem;
       padding-bottom: 1.25rem;
       font-size: 6rem;
@@ -74,7 +181,7 @@ const SGreetingContainer = styled.div<{ inView: boolean }>`
         font-size: 3rem;
       }
       @media (max-width: 480px) {
-        font-size: 3.75rem;
+        font-size: 3rem;
       }
     }
   }
@@ -87,4 +194,63 @@ const SContainer = styled.div`
   --tw-scroll-snap-strictness: mandatory;
   position: relative;
   z-index: 1;
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+const SIntroContainer = styled.div<{ inView: boolean }>`
+  color: white;
+  position: relative;
+  & > div {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    text-align: center;
+    &:nth-child(1) {
+      z-index: 5;
+      & > span {
+        text-align: center;
+        font-size: 2rem;
+
+        @media (max-width: 768px) {
+          font-size: 1rem;
+        }
+        @media (max-width: 480px) {
+          font-size: 1.2rem;
+        }
+        color: #878787;
+        animation: ${({ inView }) => (inView ? fadeIn : "none")} 6s ease-out;
+        & > strong {
+          color: #aeaeae;
+        }
+      }
+    }
+    &:nth-child(2) {
+      z-index: 4;
+      & > span {
+        text-align: center;
+        font-size: 2rem;
+        @media (max-width: 768px) {
+          font-size: 1rem;
+        }
+        @media (max-width: 480px) {
+          font-size: 1.2rem;
+        }
+        color: #000000;
+        & > strong {
+          color: #aeaeae;
+        }
+      }
+    }
+  }
 `;

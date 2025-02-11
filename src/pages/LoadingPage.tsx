@@ -3,18 +3,17 @@ import { styled } from "styled-components";
 const LoadingPage = () => {
   return (
     <SContainer>
-      <div className="card">
-        <div className="loader">
-          <div>loading</div>
-          <div className="words">
-            <span className="word">...</span>
-            <span className="word">information</span>
-            <span className="word">work experience</span>
-            <span className="word">projects</span>
-            <span className="word">contact</span>
-            <span className="word">...</span>
-          </div>
-        </div>
+      <div className="hole">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
       </div>
     </SContainer>
   );
@@ -32,88 +31,81 @@ const SContainer = styled.div`
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 1);
-  .card {
-    padding: 1rem 2rem;
-    border-radius: 1.25rem;
-  }
-  .loader {
-    color: rgb(124, 124, 124);
-    font-weight: 500;
-    font-size: 25px;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
-    height: 40px;
-    padding: 10px 10px;
-    display: -webkit-box;
-    display: -ms-flexbox;
+  .hole {
     display: flex;
-    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
   }
 
-  .words {
-    overflow: hidden;
-    position: relative;
-  }
-  .words::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      var(--bg-color) 10%,
-      transparent 30%,
-      transparent 70%,
-      var(--bg-color) 90%
-    );
-    z-index: 20;
-  }
-
-  .word {
+  i {
     display: block;
-    height: 100%;
-    padding-left: 6px;
-    color: #956afa;
-    animation: spin_4991 5s infinite;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+
+    border-radius: 140px;
+    opacity: 0;
+    animation-name: scale;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
   }
 
-  @keyframes spin_4991 {
-    10% {
-      -webkit-transform: translateY(-102%);
-      transform: translateY(-102%);
-    }
+  i:nth-child(1) {
+    animation-delay: 0.3s;
+  }
 
-    25% {
-      -webkit-transform: translateY(-100%);
-      transform: translateY(-100%);
-    }
+  i:nth-child(2) {
+    animation-delay: 0.6s;
+  }
 
-    35% {
-      -webkit-transform: translateY(-202%);
-      transform: translateY(-202%);
-    }
+  i:nth-child(3) {
+    animation-delay: 0.9s;
+  }
 
+  i:nth-child(4) {
+    animation-delay: 1.2s;
+  }
+
+  i:nth-child(5) {
+    animation-delay: 1.5s;
+  }
+
+  i:nth-child(6) {
+    animation-delay: 1.8s;
+  }
+
+  i:nth-child(7) {
+    animation-delay: 2.1s;
+  }
+
+  i:nth-child(8) {
+    animation-delay: 2.4s;
+  }
+
+  i:nth-child(9) {
+    animation-delay: 2.7s;
+  }
+
+  i:nth-child(10) {
+    animation-delay: 3s;
+  }
+
+  @keyframes scale {
+    0% {
+      transform: scale(2);
+      opacity: 0;
+      box-shadow: 0px 0px 50px rgba(255, 255, 255, 0.5);
+    }
     50% {
-      -webkit-transform: translateY(-200%);
-      transform: translateY(-200%);
+      transform: scale(1) translate(0px, -5px);
+      opacity: 1;
+      box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.5);
     }
-
-    60% {
-      -webkit-transform: translateY(-302%);
-      transform: translateY(-302%);
-    }
-
-    75% {
-      -webkit-transform: translateY(-300%);
-      transform: translateY(-300%);
-    }
-
-    85% {
-      -webkit-transform: translateY(-402%);
-      transform: translateY(-402%);
-    }
-
     100% {
-      -webkit-transform: translateY(-400%);
-      transform: translateY(-400%);
+      transform: scale(0.1) translate(0px, 5px);
+      opacity: 0;
+      box-shadow: 0px 10px 20px rgba(255, 255, 255, 0);
     }
   }
 `;

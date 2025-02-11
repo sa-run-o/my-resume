@@ -13,7 +13,7 @@ function App() {
   const [showLoadingPage, setShowLoadingPage] = useState(isPageLoading);
 
   useEffect(() => {
-    turnPageLoadingBySec(5);
+    turnPageLoadingBySec(2);
   }, []);
 
   useEffect(() => {

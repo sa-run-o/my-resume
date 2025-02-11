@@ -21,7 +21,7 @@ const SContainer = styled.section`
   width: 100%;
   scroll-snap-align: start;
   position: relative;
-  background-color: #000;
+  background-color: #171717;
   z-index: 1;
 `;
 
@@ -45,7 +45,6 @@ const SChild = styled.div`
   height: 100vh;
   width: 100vw;
   & > div {
-    padding-top: 50px;
     width: 100%;
     height: 100%;
   }

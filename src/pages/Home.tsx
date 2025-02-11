@@ -73,10 +73,13 @@ const Home = () => {
         </SGreetingContainer>
       </SectionLayout>
       <SectionLayout>
+        <div></div>
+      </SectionLayout>
+      <SectionLayout>
         <SIntroContainer ref={refIntro} inView={inViewIntro}>
           <div ref={scrollLRef}>
             <span>
-              Hi, I'm Sarun Olankranok (<strong>Run</strong>) 👋
+              Hi, I'm Sarun Olankranok (<strong>Run</strong>) 👋{" "}
             </span>
             <span>
               I'm a <strong>Fullstack Developer</strong> with{" "}
@@ -107,7 +110,7 @@ const Home = () => {
           </div>
           <div ref={scrollRRef}>
             <span>
-              Hi, I'm Sarun Olankranok (<strong>Run</strong>) 👋
+              Hi, I'm Sarun Olankranok (<strong>Run</strong>) 👋{" "}
             </span>
             <span>
               I'm a <strong>Fullstack Developer</strong> with{" "}

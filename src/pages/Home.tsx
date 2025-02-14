@@ -148,7 +148,6 @@ const Home = () => {
 };
 
 export default Home;
-
 const slideUp = keyframes`
   from {
     transform: translateY(100%);

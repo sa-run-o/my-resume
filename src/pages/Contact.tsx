@@ -15,7 +15,7 @@ const Contact = () => {
         </SVideoTextContainer>
         <div>
           <div>
-            <div>to:</div> <input value={"sarun.olan@gmail.com"} />
+            <div>to :</div> <input value={"sarun.olan@gmail.com"} />
           </div>
           <div>
             <div>from:</div> <input />

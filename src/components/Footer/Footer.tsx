@@ -26,6 +26,11 @@ const Footer = () => {
               Linkedin
             </div>
             <div
+              onClick={() => handleOpenWebNewTab("https://github.com/sa-run-o")}
+            >
+              Gitgub
+            </div>
+            <div
               onClick={() =>
                 handleOpenWebNewTab("https://www.instagram.com/a.runnnnn/")
               }

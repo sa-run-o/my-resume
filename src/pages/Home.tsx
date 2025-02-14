@@ -3,6 +3,7 @@ import SectionLayout from "../components/Body/SectionLayout";
 import { useInView } from "react-intersection-observer";
 import sand from "../assets/background/sand.jpg";
 import { useEffect, useRef } from "react";
+import Footer from "../components/Footer/Footer";
 
 const Home = () => {
   const { ref: refGreet, inView: inViewGreet } = useInView({
@@ -141,6 +142,7 @@ const Home = () => {
           </div>
         </SIntroContainer>
       </SectionLayout>
+      <Footer />
     </SContainer>
   );
 };

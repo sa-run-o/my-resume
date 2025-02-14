@@ -17,11 +17,11 @@ const SectionLayout = ({ children, bgImage }: ISectionLayout) => {
 export default SectionLayout;
 
 const SContainer = styled.section`
-  height: 100vh;
+  height: 100%;
   width: 100%;
   scroll-snap-align: start;
   position: relative;
-  background-color: #171717;
+  background-color: black;
   z-index: 1;
 `;
 
@@ -42,8 +42,8 @@ const SBgImage = styled.div<{ src: string }>`
 const SChild = styled.div`
   position: relative;
   z-index: 2;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   & > div {
     width: 100%;
     height: 100%;

@@ -1,7 +1,12 @@
 import { styled } from "styled-components";
+import Footer from "../components/Footer/Footer";
 
 const Experience = () => {
-  return <SContainer>Experience</SContainer>;
+  return (
+    <SContainer>
+      <Footer />
+    </SContainer>
+  );
 };
 export default Experience;
 const SContainer = styled.div`

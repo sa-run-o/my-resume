@@ -49,21 +49,29 @@ const SContainer = styled.div`
   top: 0;
   width: 100%;
   height: 5vh;
+  mix-blend-mode: difference;
   color: black;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   .left {
     margin-left: 5vw;
     cursor: pointer;
     font-weight: bolder;
+    mix-blend-mode: difference;
+    color: white;
   }
+
   .right {
     margin-right: 5vw;
     height: 80%;
     display: flex;
     align-items: center;
+    mix-blend-mode: difference;
+    color: white;
   }
+
   @media (max-width: 768px) {
     height: 6vh;
   }
@@ -72,17 +80,17 @@ const SContainer = styled.div`
     height: 7vh;
   }
 `;
+
 const SMenu = styled.div`
   padding: 0px 7px;
   position: relative;
   cursor: pointer;
+  mix-blend-mode: inherit;
+
   &.selected {
     font-weight: bold;
   }
 
-  &:hover {
-    color: #090909 !important ;
-  }
   &::after {
     content: "";
     position: absolute;
@@ -91,19 +99,20 @@ const SMenu = styled.div`
     width: 0;
     height: 2px;
     transition: width 0.3s ease-in-out;
-    background-color: #656565;
+    background-color: white;
   }
+
   &:hover::after {
     width: 100%;
-    background-color: #090909;
+    background-color: white;
   }
 `;
+
 const SMenuContainer = styled.div`
   position: relative;
   display: flex;
   align-items: center;
   transition: color 0.3s ease-in-out;
-  &:hover {
-    color: #656565 !important;
-  }
+  mix-blend-mode: inherit;
+  color: white;
 `;

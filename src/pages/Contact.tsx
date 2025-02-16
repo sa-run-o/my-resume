@@ -1,6 +1,8 @@
 import { styled } from "styled-components";
 import workingVideo from "../assets/video/working.mp4";
 import Footer from "../components/Footer/Footer";
+import Dropdown from "../components/Body/Dropdown";
+const EMAIL_CLIENT_OPTIONS = ["Default Email App", "Gmail", "Outlook"];
 const Contact = () => {
   return (
     <SContainer>
@@ -13,23 +15,52 @@ const Contact = () => {
             <div>GET IN TOUCH.</div>
           </div>
         </SVideoTextContainer>
-        <div>
+        <SMailContainer>
           <div>
-            <div>to :</div> <input value={"sarun.olan@gmail.com"} />
+            <div>SEND FORM</div>
+            <div>
+              <Dropdown options={EMAIL_CLIENT_OPTIONS} onSelect={() => {}} />
+            </div>
           </div>
           <div>
-            <div>from:</div> <input />
+            <div>TO</div>
+            <div>
+              <input value={"sarun.olan@gmail.com"} />
+            </div>
           </div>
           <div>
-            <div>message:</div> <input />
+            <div>MESSAGE</div>
+            <div>
+              <textarea />
+            </div>
           </div>
-        </div>
+        </SMailContainer>
         <Footer />
       </div>
     </SContainer>
   );
 };
 export default Contact;
+const SMailContainer = styled.div`
+  padding: 0px 20%;
+  & > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    & > div {
+      &:nth-child(1) {
+        font-size: 2vw;
+        width: 20%;
+        color: #171717;
+        -webkit-text-stroke: 0.5px white;
+      }
+      &:nth-child(2) {
+        width: 75%;
+      }
+    }
+  }
+`;
 const SContainer = styled.div`
   height: 100vh;
   width: 100vw;
@@ -48,9 +79,6 @@ const SVideoTextContainer = styled.div`
   overflow: hidden;
   margin-top: 10%;
   @media (max-width: 768px) {
-    margin-top: 20%;
-  }
-  @media (max-width: 480px) {
     margin-top: 20%;
   }
   & > video {

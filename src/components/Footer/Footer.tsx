@@ -14,37 +14,41 @@ const Footer = () => {
             <span>THANK YOU</span>
             <span> FOR VISIT HERE.</span>
           </div>
-          <div className="topic">FOLLOW ME</div>
-          <SSocialContainer>
-            <div
-              onClick={() =>
-                handleOpenWebNewTab(
-                  "https://www.linkedin.com/in/sarun-olankranok-754080342/"
-                )
-              }
-            >
-              Linkedin
-            </div>
-            <div
-              onClick={() => handleOpenWebNewTab("https://github.com/sa-run-o")}
-            >
-              Gitgub
-            </div>
-            <div
-              onClick={() =>
-                handleOpenWebNewTab("https://www.instagram.com/a.runnnnn/")
-              }
-            >
-              Instagram
-            </div>
-            <div
-              onClick={() =>
-                handleOpenWebNewTab("https://www.facebook.com/Runwayzlenon/")
-              }
-            >
-              Facebook
-            </div>
-          </SSocialContainer>
+          <div className="follow">
+            <div className="topic">FOLLOW ME</div>
+            <SSocialContainer>
+              <div
+                onClick={() =>
+                  handleOpenWebNewTab(
+                    "https://www.linkedin.com/in/sarun-olankranok-754080342/"
+                  )
+                }
+              >
+                Linkedin
+              </div>
+              <div
+                onClick={() =>
+                  handleOpenWebNewTab("https://github.com/sa-run-o")
+                }
+              >
+                Gitgub
+              </div>
+              <div
+                onClick={() =>
+                  handleOpenWebNewTab("https://www.instagram.com/a.runnnnn/")
+                }
+              >
+                Instagram
+              </div>
+              <div
+                onClick={() =>
+                  handleOpenWebNewTab("https://www.facebook.com/Runwayzlenon/")
+                }
+              >
+                Facebook
+              </div>
+            </SSocialContainer>
+          </div>
         </SDetail>
       </SectionLayout>
     </SContainer>
@@ -57,8 +61,18 @@ const SContainer = styled.div`
 `;
 const SDetail = styled.div`
   padding: 20px 20px 30px 20px;
+  @media (min-width: 480px) {
+    display: flex;
+  }
+
   & > div {
     &.head {
+      @media (min-width: 480px) {
+        width: 50%;
+        text-align: end;
+        margin-right: 20px;
+        line-height: 6.4vw;
+      }
       font-size: 6.4vw;
       font-weight: 900;
       & > span {
@@ -71,9 +85,11 @@ const SDetail = styled.div`
         }
       }
     }
-    &.topic {
-      color: #5b5b5b;
-      padding: 5px 0px;
+    & > div {
+      &.topic {
+        color: #5b5b5b;
+        padding: 5px 0px;
+      }
     }
   }
 `;

@@ -3,6 +3,7 @@ import workingVideo from "../assets/video/working.mp4";
 import Footer from "../components/Footer/Footer";
 import Dropdown from "../components/Body/Dropdown";
 import { useState } from "react";
+import Tooltip from "../components/Body/Tooltip";
 const EMAIL_CLIENT_OPTIONS = ["Default Email App", "Gmail", "Outlook"];
 const Contact = () => {
   const email = "sarun.olan@gmail.com";
@@ -54,9 +55,15 @@ const Contact = () => {
           </div>
           <div>
             <div>TO</div>
-            <SMail>
-              <div>sarun.olan@gmail.com</div>
-            </SMail>
+            <Tooltip text={"Click to copy."}>
+              <SMail
+                onClick={() => {
+                  navigator.clipboard.writeText("sarun.olan@gmail.com");
+                }}
+              >
+                <div>sarun.olan@gmail.com</div>
+              </SMail>
+            </Tooltip>
           </div>
           <div>
             <div>SUBJECT</div>
@@ -102,7 +109,7 @@ const SButton = styled.div`
   margin: 30px 0px !important;
   cursor: pointer;
   & > div {
-    font-size: 25px !important;
+    font-size: 1.5rem !important;
     width: fit-content !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -110,6 +117,7 @@ const SButton = styled.div`
 `;
 const SInput = styled.input`
   width: 95%;
+  overflow: hidden;
   height: 100%;
   background: rgba(255, 255, 255, 0.1);
   color: white;
@@ -136,12 +144,14 @@ const STextArea = styled.textarea`
   }
 `;
 const SMail = styled.div`
+  overflow: hidden;
   width: 100%;
   border: 1px solid white;
   border-radius: 5px;
   display: flex;
   align-items: center;
   background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
   & > div {
     margin-left: 5%;
     font-weight: bold;
@@ -156,8 +166,9 @@ const SMailContainer = styled.div`
     margin-top: 30px;
     & > div {
       &:nth-child(1) {
-        font-size: 2vw;
+        font-size: 1rem;
         width: 20%;
+        min-width: 80px;
         color: #171717;
         -webkit-text-stroke: 0.5px white;
       }
@@ -189,7 +200,8 @@ const SVideoTextContainer = styled.div`
   }
   & > video {
     width: 60%;
-    min-width: 400px;
+    /* min-width: 400px; */
+    min-width: 20%;
     filter: grayscale(100%);
   }
   & > div {
@@ -205,8 +217,22 @@ const SVideoTextContainer = styled.div`
     height: 100%;
     width: 100%;
     mix-blend-mode: darken;
-    font-size: 13rem;
+    font-size: 14vw;
+    line-height: 14vw;
+    /* font-size: 13rem;
     line-height: 13rem;
+    @media (max-width: 1260px) {
+      font-size: 11rem;
+      line-height: 11rem;
+    }
+    @media (max-width: 1000px) {
+      font-size: 9rem;
+      line-height: 9rem;
+    }
+    @media (max-width: 880px) {
+      font-size: 8rem;
+      line-height: 8rem;
+    }
     @media (max-width: 768px) {
       font-size: 7rem;
       line-height: 7rem;
@@ -214,6 +240,6 @@ const SVideoTextContainer = styled.div`
     @media (max-width: 480px) {
       font-size: 5rem;
       line-height: 5rem;
-    }
+    } */
   }
 `;

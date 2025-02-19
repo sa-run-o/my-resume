@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import sand from "../assets/background/sand.jpg";
 import Footer from "../components/Footer/Footer";
 import Typing from "../components/Body/Typing";
+import ThreeDCard from "../components/Body/ThreeDCard";
 
 const Home = () => {
   const { ref: refGreet, inView: inViewGreet } = useInView({
@@ -58,12 +59,99 @@ const Home = () => {
           </SIntro>
         </SectionLayout>
       </SIntroContainer>
+      <SWidgetContainer>
+        <SectionLayout>
+          <SGridContainer>
+            <div style={{ gridColumn: "span 3", gridRow: "span 2" }}>
+              <ThreeDCard>
+                <div>บัตรแนะนำตัว</div>
+              </ThreeDCard>
+            </div>
+            <div style={{ gridRow: "span 2" }}>
+              <ThreeDCard>
+                <div>อากาศเรา (dpn maps)</div>
+              </ThreeDCard>
+            </div>
+            <div style={{ gridRow: "span 2" }}>
+              <ThreeDCard>
+                <div> ค่าฝุ่นเรา (dpn maps)</div>
+              </ThreeDCard>
+            </div>
+            <div>
+              <ThreeDCard>
+                <div>เวลาวันที่เรา (dpn maps)</div>
+              </ThreeDCard>
+            </div>
+            <div>
+              <ThreeDCard>
+                <div>จังหวัดเรา (dpn maps)</div>
+              </ThreeDCard>
+            </div>
+            <div style={{ gridColumn: "span 3" }}>
+              <ThreeDCard>
+                <div>งานอดิเรกมั้ง</div>
+              </ThreeDCard>
+            </div>
+            <div style={{ gridRow: "span 3", gridColumn: "span 3" }}>
+              <ThreeDCard>
+                <div> open street map</div>
+              </ThreeDCard>
+            </div>
+            <div>
+              <ThreeDCard>
+                <div>leetcode</div>
+              </ThreeDCard>
+              leetcode
+            </div>
+            <div>
+              <ThreeDCard>
+                <div> cssbattle</div>
+              </ThreeDCard>
+            </div>
+            <div>
+              <ThreeDCard>
+                <div> ref person</div>
+              </ThreeDCard>
+            </div>
+            <div>
+              <ThreeDCard>
+                <div>typescript</div>
+              </ThreeDCard>
+            </div>
+            <div>
+              <ThreeDCard>
+                <div>react</div>
+              </ThreeDCard>
+            </div>
+            <div>
+              <ThreeDCard>
+                <div> nodejs</div>
+              </ThreeDCard>
+            </div>
+          </SGridContainer>
+        </SectionLayout>
+      </SWidgetContainer>
       <Footer />
     </SContainer>
   );
 };
 
 export default Home;
+const SGridContainer = styled.div`
+  color: white;
+  display: grid;
+  grid-template: repeat(5, 1fr) / repeat(6, 1fr);
+  gap: 15px;
+  padding: 20px;
+  box-sizing: border-box;
+  & > div {
+    background-color: #191919;
+  }
+`;
+const SWidgetContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+`;
 const SIntroContainer = styled.div`
   width: 100vw;
   height: 100vh;

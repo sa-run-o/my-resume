@@ -25,6 +25,7 @@ const Header = () => {
           {DEFAULT_MENU.map((menu) => {
             return (
               <SMenu
+                key={menu.label}
                 className={`${
                   location.pathname === menu.nav ? "selected" : ""
                 }`}

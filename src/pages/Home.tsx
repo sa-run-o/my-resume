@@ -97,11 +97,15 @@ const Home = () => {
                 <div> open street map</div>
               </ThreeDCard>
             </div>
+            <div style={{ gridColumn: "span 3" }}>
+              <ThreeDCard>
+                <div>github stat</div>
+              </ThreeDCard>
+            </div>
             <div>
               <ThreeDCard>
                 <div>leetcode</div>
               </ThreeDCard>
-              leetcode
             </div>
             <div>
               <ThreeDCard>
@@ -110,22 +114,7 @@ const Home = () => {
             </div>
             <div>
               <ThreeDCard>
-                <div> ref person</div>
-              </ThreeDCard>
-            </div>
-            <div>
-              <ThreeDCard>
-                <div>typescript</div>
-              </ThreeDCard>
-            </div>
-            <div>
-              <ThreeDCard>
-                <div>react</div>
-              </ThreeDCard>
-            </div>
-            <div>
-              <ThreeDCard>
-                <div> nodejs</div>
+                <div>linkedin</div>
               </ThreeDCard>
             </div>
           </SGridContainer>

@@ -2,8 +2,8 @@ import styled, { keyframes } from "styled-components";
 import SectionLayout from "../components/Body/SectionLayout";
 import { useInView } from "react-intersection-observer";
 import sand from "../assets/background/sand.jpg";
-import { useEffect, useRef } from "react";
 import Footer from "../components/Footer/Footer";
+import Typing from "../components/Body/Typing";
 
 const Home = () => {
   const { ref: refGreet, inView: inViewGreet } = useInView({
@@ -14,141 +14,64 @@ const Home = () => {
     triggerOnce: false,
     threshold: 0.5,
   });
-  const scrollLRef = useRef<HTMLDivElement>(null);
-  const scrollRRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const leftElement = scrollLRef.current;
-    const rightElement = scrollRRef.current;
 
-    if (leftElement && rightElement) {
-      const handleScroll = (e: Event) => {
-        if (e.target === leftElement) {
-          rightElement.scrollTop = leftElement.scrollTop;
-        } else if (e.target === rightElement) {
-          leftElement.scrollTop = rightElement.scrollTop;
-        }
-      };
-
-      leftElement.addEventListener("scroll", handleScroll);
-      rightElement.addEventListener("scroll", handleScroll);
-
-      return () => {
-        leftElement.removeEventListener("scroll", handleScroll);
-        rightElement.removeEventListener("scroll", handleScroll);
-      };
-    }
-  }, []);
   return (
     <SContainer>
-      <SectionLayout bgImage={sand}>
-        <SGreetingContainer ref={refGreet} inView={inViewGreet}>
-          <div className="welcome f">
-            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
-            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
-            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
-          </div>
-          <div className="welcome s">
-            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
-            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
-            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
-          </div>
-          <div className="welcome t">
-            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
-            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
-            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
-          </div>
-          <div className="welcome fo">
-            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
-            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
-            WELCOME WELCOME WELCOME WELCOME WELCOME WELCOME
-          </div>
-          <div className="name">
-            <div>SARUN</div>
-          </div>
-          <div className="position">
-            <div>FULLSTACK DEVELOPER</div>
-          </div>
-          <div className="surname">
-            <div>OLANKRANOK</div>
-          </div>
-        </SGreetingContainer>
-      </SectionLayout>
-      <SectionLayout>
-        <div></div>
-      </SectionLayout>
-      <SectionLayout>
-        <SIntroContainer ref={refIntro} inView={inViewIntro}>
-          <div ref={scrollLRef}>
-            <span>
-              Hi, I'm Sarun Olankranok (<strong>Run</strong>) 👋{" "}
-            </span>
-            <span>
-              I'm a <strong>Fullstack Developer</strong> with{" "}
-              <strong>4 years of experience</strong>, specializing in{" "}
-              <strong>React Hook, TypeScript, and Node.js</strong>. My passion
-              lies in <strong>frontend development</strong>, crafting seamless{" "}
-              <strong>UI/UX experiences</strong>, and bringing interfaces to
-              life with <strong>animations</strong>.
-            </span>
-            <span>
-              I love building{" "}
-              <strong>intuitive and engaging web applications</strong> that not
-              only function smoothly but also <strong>feel great to use</strong>
-              . Whether it's{" "}
-              <strong>
-                interactive UI elements, dynamic animations, or optimizing
-                performance
-              </strong>
-              , I enjoy turning ideas into{" "}
-              <strong>beautifully designed digital experiences</strong>.
-            </span>
-            <span>
-              Beyond coding, I enjoy <strong>reading manga & novels 📚</strong>{" "}
-              and <strong>playing games 🎮</strong>, which inspire my creativity
-              in <strong>design and user interaction</strong>. Let's create
-              something amazing together! 🚀
-            </span>
-          </div>
-          <div ref={scrollRRef}>
-            <span>
-              Hi, I'm Sarun Olankranok (<strong>Run</strong>) 👋{" "}
-            </span>
-            <span>
-              I'm a <strong>Fullstack Developer</strong> with{" "}
-              <strong>4 years of experience</strong>, specializing in{" "}
-              <strong>React Hook, TypeScript, and Node.js</strong>. My passion
-              lies in <strong>frontend development</strong>, crafting seamless{" "}
-              <strong>UI/UX experiences</strong>, and bringing interfaces to
-              life with <strong>animations</strong>.
-            </span>
-            <span>
-              I love building{" "}
-              <strong>intuitive and engaging web applications</strong> that not
-              only function smoothly but also <strong>feel great to use</strong>
-              . Whether it's{" "}
-              <strong>
-                interactive UI elements, dynamic animations, or optimizing
-                performance
-              </strong>
-              , I enjoy turning ideas into{" "}
-              <strong>beautifully designed digital experiences</strong>.
-            </span>
-            <span>
-              Beyond coding, I enjoy <strong>reading manga & novels 📚</strong>{" "}
-              and <strong>playing games 🎮</strong>, which inspire my creativity
-              in <strong>design and user interaction</strong>. Let's create
-              something amazing together! 🚀
-            </span>
-          </div>
-        </SIntroContainer>
-      </SectionLayout>
+      <SGreetingContainer>
+        <SectionLayout bgImage={sand}>
+          <SGreeting ref={refGreet} inView={inViewGreet}>
+            <div className="welcome f">{"WELCOME ".repeat(22)}</div>
+            <div className="welcome s">{"WELCOME ".repeat(22)}</div>
+            <div className="welcome t">{"WELCOME ".repeat(22)}</div>
+            <div className="welcome fo">{"WELCOME ".repeat(22)}</div>
+            <div className="name">
+              <div>SARUN</div>
+            </div>
+            <div className="position">
+              <div>FULLSTACK DEVELOPER</div>
+            </div>
+            <div className="surname">
+              <div>OLANKRANOK</div>
+            </div>
+          </SGreeting>
+        </SectionLayout>
+      </SGreetingContainer>
+      <SIntroContainer>
+        <SectionLayout>
+          <SIntro ref={refIntro} inView={inViewIntro}>
+            {inViewIntro && (
+              <div>
+                FULLSTACK
+                <br />
+                DEVELOPER
+              </div>
+            )}
+            {inViewIntro && (
+              <div>
+                <Typing text={"4 years of experience,"} startDelay={0} />
+                <Typing text={"specializing in React"} startDelay={2500} />
+                <Typing text={"Hook, TypeScript and"} startDelay={5000} />
+                <Typing text={"Node.js. My passion lies"} startDelay={7500} />
+                <Typing text={"in frontend development."} startDelay={10000} />
+              </div>
+            )}
+          </SIntro>
+        </SectionLayout>
+      </SIntroContainer>
       <Footer />
     </SContainer>
   );
 };
 
 export default Home;
-
+const SIntroContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+`;
+const SGreetingContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+`;
 const slideUp = keyframes`
   from {
     transform: translateY(100%);
@@ -185,7 +108,7 @@ const slideUpNoOpacity = keyframes`
     transform: translateY(0%);
   }
 `;
-const SGreetingContainer = styled.div<{ inView: boolean }>`
+const SGreeting = styled.div<{ inView: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -262,6 +185,7 @@ const SContainer = styled.div`
   --tw-scroll-snap-strictness: mandatory;
   position: relative;
   z-index: 1;
+  overflow-x: hidden;
 `;
 
 const fadeIn = keyframes`
@@ -272,8 +196,34 @@ const fadeIn = keyframes`
     opacity: 1;
   }
 `;
-const SIntroContainer = styled.div<{ inView: boolean }>`
+const SIntro = styled.div<{ inView: boolean }>`
   color: white;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  & > div {
+    &:nth-child(1) {
+      text-align: end;
+      align-self: flex-start;
+      font-size: 6vw;
+      line-height: 6vw;
+      margin: 30px 0px 0px 30px;
+      font-weight: 900;
+      width: 40%;
+      overflow: hidden;
+    }
+    &:nth-child(2) {
+      align-self: flex-end;
+      font-size: 3.6vw;
+      line-height: 3.4vw;
+      width: 50%;
+      font-weight: 500;
+      letter-spacing: -3px;
+      margin: 0px 30px 30px 0px;
+    }
+  }
+  /* color: white;
   position: relative;
   & > div {
     position: absolute;
@@ -320,5 +270,5 @@ const SIntroContainer = styled.div<{ inView: boolean }>`
         }
       }
     }
-  }
+  } */
 `;

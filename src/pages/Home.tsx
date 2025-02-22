@@ -5,6 +5,7 @@ import sand from "../assets/background/sand.jpg";
 import Footer from "../components/Footer/Footer";
 import Typing from "../components/Body/Typing";
 import ThreeDCard from "../components/Body/ThreeDCard";
+import DigitalClock from "../components/Body/DigitalClock";
 
 const Home = () => {
   const { ref: refGreet, inView: inViewGreet } = useInView({
@@ -79,7 +80,9 @@ const Home = () => {
             </div>
             <div>
               <ThreeDCard>
-                <div>เวลาวันที่เรา (dpn maps)</div>
+                <div>
+                  <DigitalClock />
+                </div>
               </ThreeDCard>
             </div>
             <div>
@@ -133,9 +136,6 @@ const SGridContainer = styled.div`
   gap: 15px;
   padding: 20px;
   box-sizing: border-box;
-  & > div {
-    background-color: #191919;
-  }
 `;
 const SWidgetContainer = styled.div`
   width: 100vw;
@@ -294,58 +294,10 @@ const SIntro = styled.div<{ inView: boolean }>`
       align-self: flex-end;
       font-size: 3.6vw;
       line-height: 3.4vw;
-      width: 50%;
+      width: 40%;
       font-weight: 500;
       letter-spacing: -3px;
       margin: 0px 30px 30px 0px;
     }
   }
-  /* color: white;
-  position: relative;
-  & > div {
-    position: absolute;
-    top: 15%;
-    left: 15%;
-    width: 70%;
-    height: 70%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    text-align: center;
-    &:nth-child(1) {
-      z-index: 5;
-      & > span {
-        text-align: center;
-        font-size: 2rem;
-
-        @media (max-width: 768px) {
-          font-size: 1rem;
-        }
-        @media (max-width: 480px) {
-          font-size: 1.2rem;
-        }
-        color: #878787;
-        animation: ${({ inView }) => (inView ? fadeIn : "none")} 6s ease-out;
-        & > strong {
-          color: #e3e3e3;
-        }
-      }
-    }
-    &:nth-child(2) {
-      z-index: 4;
-      & > span {
-        text-align: center;
-        font-size: 2rem;
-        @media (max-width: 768px) {
-          font-size: 1rem;
-        }
-        @media (max-width: 480px) {
-          font-size: 1.2rem;
-        }
-        color: #000000;
-        & > strong {
-          color: #e3e3e3;
-        }
-      }
-    }
-  } */
 `;

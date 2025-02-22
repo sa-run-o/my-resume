@@ -37,12 +37,12 @@ const Typing: React.FC<TypingTextProps> = ({
   }, [text, typingSpeed, startDelay]);
 
   return (
-    <STextContainer>
+    <SContainer>
       {displayedText}
       <SCaret show={isTyping} startDelay={startDelay}>
         |
       </SCaret>
-    </STextContainer>
+    </SContainer>
   );
 };
 
@@ -51,9 +51,7 @@ const blink = keyframes`
   50% { opacity: 0; }
 `;
 
-const STextContainer = styled.div`
-  font-family: monospace;
-`;
+const SContainer = styled.div``;
 const SCaret = styled.span<{ show: boolean; startDelay: number }>`
   display: ${({ show }) => (show ? "inline-block" : "none")};
   width: 8px;

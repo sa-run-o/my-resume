@@ -46,7 +46,8 @@ const SCardContainer = styled.div`
 const SCard = styled.div<{ rotateX: number; rotateY: number }>`
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  background: rgba(128, 128, 128, 0.25);
+  /* background: linear-gradient(135deg, #383838, #fef7f5); */
   border-radius: 15px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   display: flex;

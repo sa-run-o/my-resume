@@ -6,6 +6,7 @@ import Footer from "../components/Footer/Footer";
 import Typing from "../components/Body/Typing";
 import ThreeDCard from "../components/Body/ThreeDCard";
 import DigitalClock from "../components/Body/DigitalClock";
+import WeatherBoard from "../components/Body/WeatherBoard";
 
 const Home = () => {
   const { ref: refGreet, inView: inViewGreet } = useInView({
@@ -70,7 +71,9 @@ const Home = () => {
             </div>
             <div style={{ gridRow: "span 2" }}>
               <ThreeDCard>
-                <div>อากาศเรา (dpn maps)</div>
+                <div>
+                  <WeatherBoard />
+                </div>
               </ThreeDCard>
             </div>
             <div style={{ gridRow: "span 2" }}>
